@@ -1,0 +1,55 @@
+<div *ngIf="!showConfirmationPage" class="form-wrapper" [ngClass]="darkMode ? 'dark-mode' : 'light-mode'">
+  <div class="form-header" *ngIf="header">{{header}}</div>
+  <div class="form-description" *ngIf="description">{{description}}</div>
+  <form nz-form class="custom-reusable-form" [formGroup]="myFormGroup">
+    <div *ngFor="let control of allControlsArr">
+      <nz-form-item *ngIf="myFormGroup.get(control)">
+        <app-input
+          *ngIf="!newInputs[control].textArea"
+          [inputsObj]="newInputs"
+          [form]="myFormGroup"
+          [darkMode]="darkMode"
+          [controlName]="control"></app-input>
+        <app-text-area
+          *ngIf="newInputs[control].textArea"
+          [inputsObj]="newInputs"
+          [form]="myFormGroup"
+          [darkMode]="darkMode"
+          [controlName]="control"></app-text-area>
+      </nz-form-item>
+    </div>
+
+    <nz-form-item>
+      <app-text-area
+        *ngIf="newInputs[inputsObj['optional']?.optionalInputKey]"
+        [inputsObj]="newInputs"
+        [form]="myFormGroup"
+        [darkMode]="darkMode"
+        [controlName]="inputsObj['optional']?.optionalInputKey"></app-text-area>
+    </nz-form-item>
+
+    <app-select
+      *ngIf="keys(selectFields)?.length"
+      [form]="myFormGroup"
+      [darkMode]="darkMode"
+      [selectFields]="selectFields"></app-select>
+
+    <div class="checkbox-container">
+      <label nz-checkbox formControlName="checkbox">Subscribe to the Marketing Blog</label>
+      <div class="disclaimer">
+        We're committed to your privacy. Sky Ledge uses the information you provide to us to contact you about our relevant content, products, and services. You may unsubscribe from these communications at any time. For more information, check out our Privacy Policy.
+      </div>
+    </div>
+
+    <button
+      nz-button
+      (click)="submitForm()"
+      class="gradient-border-rounded">
+      {{ submitText ? submitText : 'Continue' }}
+    </button>
+  </form>
+</div>
+
+<div *ngIf="showConfirmationPage" class="form-wrapper" [ngClass]="darkMode ? 'dark-mode' : 'light-mode'">
+  <ng-content></ng-content>
+</div>

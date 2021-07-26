@@ -1,0 +1,141 @@
+form.custom-select-element {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+  position: relative;
+
+  .ant-form-item-control {
+    width: 100%;
+    &:last-of-type::ng-deep.ant-form-item-control-input-content {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}
+
+::ng-deep.ant-select {
+  margin-bottom: 40px;
+
+  .ant-select-selector {
+    height: 40px !important;
+    font-size: 16px;
+    text-align: center;
+    display: flex !important;
+    align-items: center !important;
+    backdrop-filter: blur(50px) !important;
+    transition: background-color 0.3s ease-in-out !important;
+  }
+
+  &::ng-deep.ant-select-selection-search {
+    .ant-select-selection-search-input {
+      line-height: 100% !important;
+      height: 100% !important;
+      text-align: center;
+    }
+  }
+
+  .ant-select-arrow {
+    margin-right: 8px;
+  }
+}
+
+
+.light-mode {
+  form.custom-select-element {
+    padding-top: 0;
+  }
+
+  ::ng-deep.ant-select {
+    margin-bottom: 16px;
+    &:not(.ant-select-disabled) {
+      .ant-select-selector {
+        &:hover {
+          background: #fcfcfc;
+        }
+
+        &:focus {
+          background: #fcfcfc;
+          &::placeholder {
+            color: transparent;
+          }
+        }
+      }
+    }
+
+    .ant-select-selector {
+      border-radius: 4px !important;
+      border: 1px solid #D9D9D9 !important;
+      transition: background-color 0.3s ease-in-out !important;
+      text-align: start;
+    }
+
+    &::ng-deep.ant-select-selection-search {
+      .ant-select-selection-search-input {
+        text-align: start;
+      }
+    }
+  }
+}
+
+.dark-mode {
+  form.custom-select-element {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 8px;
+    position: relative;
+
+    .ant-form-item-control {
+      width: 100%;
+      &:last-of-type::ng-deep.ant-form-item-control-input-content {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  ::ng-deep.ant-select {
+    margin-bottom: 40px;
+
+    .ant-select-selector {
+      color: #fff;
+      height: 50px !important;
+      background: rgba(#8D9EF0, 10%) !important;
+
+      // gradient-border-rounded
+      border: double 0.5px transparent !important;
+      border-radius: 8px !important;
+      background-image: linear-gradient(#191B27, #191B27),
+      linear-gradient(to bottom, rgba(white, 0.1), rgba(white, 0.03)) !important;
+      background-origin: border-box !important;
+      background-clip: padding-box, border-box !important;
+
+      &:hover {
+        background: #0C0E1A !important;
+        border: solid 0.5px rgba(#fff, 0.1) !important;
+      }
+    }
+
+    &.ant-select-focused {
+      .ant-select-selector {
+        background: #0C0E1A !important;
+        border: 0.5px solid #F9CB27 !important;
+      }
+    }
+
+    &.ant-select-open {
+      .ant-select-selection-placeholder {
+        color: #bfbfbf;
+      }
+    }
+
+    .ant-select-arrow {
+      color: white;
+    }
+  }
+
+  ::ng-deep.ant-select-selection-placeholder {
+    color: white;
+  }
+}
+
+.light-mode {}

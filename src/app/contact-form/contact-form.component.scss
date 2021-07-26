@@ -1,0 +1,158 @@
+.form-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 32px 32px 64px;
+  box-shadow: 0 0 4px 0 rgba(0,0,0,0.05), 0 0 16px 0 rgba(0,0,0,0.1);
+}
+
+.form-header {
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 36px;
+}
+
+.form-description {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-size: 14px;
+}
+
+form.custom-reusable-form {
+  width: 100%;
+
+  .ant-checkbox-wrapper {
+    margin-bottom: 16px;
+  }
+
+  .ant-checkbox-wrapper, ::ng-deep.ant-checkbox, ::ng-deep.ant-checkbox-inner {
+    font-size: 14px !important;
+  }
+
+  .disclaimer {
+    color: #000;
+    font-size: 12px;
+    line-height: 16px;
+    margin-bottom: 16px;
+  }
+
+  ::ng-deep.ant-form-item {
+    margin-bottom: 32px;
+    position: relative;
+    margin-top: 60px;
+
+    & > * {
+      width: 100%;
+    }
+
+    .help-error {
+      color: #ff4d4f;
+      font-size: 12px;
+      font-weight: 400;
+      margin-top: 4px;
+      position: absolute;
+      min-height: 18px;
+      bottom: -24px;
+    }
+
+    .ant-label {
+      position: absolute;
+      top: -30px;
+      width: 100%;
+    }
+
+    .ant-form-item-explain {
+      min-height: 18px;
+      position: absolute;
+      bottom: -24px;
+
+      .ng-trigger {
+        font-size: 12px;
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+.ant-btn, .ant-btn:hover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  width: 100%;
+  font-weight: 500;
+  box-shadow: 0 0 1px rgba(40, 41, 61, 0.04), 0 2px 4px rgba(57, 77, 96, 0.08);
+  border-radius: 8px;
+}
+
+
+.light-mode {
+  &.form-wrapper {
+    padding: 32px;
+  }
+
+  .form-header {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 30px;
+  }
+
+  form.custom-reusable-form {
+    .ant-btn, .ant-btn:hover {
+      width: 60%;
+      border-radius: 4px;
+      background: rgb(117, 234, 247);
+      color: black;
+      box-shadow: none;
+    }
+
+    ::ng-deep.ant-form-item {
+      margin: 16px 0 !important;
+
+      .ant-label {
+        display: none;
+      }
+
+      .ant-form-item-explain {
+        position: static;
+        margin-bottom: -8px;
+      }
+    }
+}
+}
+
+.dark-mode {
+  &.form-wrapper {
+    background: #13141D !important;
+
+    .ant-checkbox-wrapper, ::ng-deep.ant-checkbox, ::ng-deep.ant-checkbox-inner {
+      color: white;
+    }
+
+    .disclaimer {
+      color: white;
+    }
+  }
+
+  .form-header {
+    color: #fff;
+  }
+
+  .form-description {
+    color: #fff;
+  }
+
+  form.custom-reusable-form {
+    ::ng-deep.ant-form-item {
+      color: #fff;
+
+      .ant-label {
+        color: #fff;
+      }
+    }
+  }
+
+  .ant-btn, .ant-btn:hover {
+    background: #F9CB27;
+    color: #13141D;
+  }
+}

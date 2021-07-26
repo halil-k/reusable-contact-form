@@ -1,0 +1,20 @@
+<div [ngClass]="darkMode ? 'dark-mode' : 'light-mode'">
+  <form class="custom-select-element" [style.width]="'100%'" [formGroup]="form">
+    <nz-form-control
+      *ngFor="let field of selectFieldsIterator">
+      <nz-input-group
+        [style.width]="selectFieldsIterator.length === 2 ? 'calc(100% - 8px)' : '100%'">
+        <nz-select
+          nzShowSearch
+          [nzDisabled]="field.name === 'state' && !form.value.country && selectFieldsIterator.length === 2"
+          (ngModelChange)="updateStates(field.name)"
+          [formControlName]="field.name"
+          [style.width]="'100%'"
+          [nzDropdownClassName]="'custom-ant-select-dropdown'"
+          [nzPlaceHolder]="field.placeholder">
+          <nz-option *ngFor="let opt of field.options" [nzLabel]="opt.label" [nzValue]="opt.value"></nz-option>
+        </nz-select>
+      </nz-input-group>
+    </nz-form-control>
+  </form>
+</div>

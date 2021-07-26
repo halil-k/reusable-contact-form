@@ -1,0 +1,16 @@
+<div [ngClass]="darkMode ? 'dark-mode' : 'light-mode'">
+  <form nz-form [formGroup]="form">
+    <label class="ant-label">{{titleCase(controlName)}}</label>
+    <nz-form-control [nzErrorTip]="getErrorTip(controlName)">
+      <nz-input-group>
+        <textarea
+          nz-input
+          type="text"
+          [id]="controlName"
+          [formControlName]="controlName"
+          class="gradient-border-rounded"
+          [placeholder]="placeholder"></textarea>
+      </nz-input-group>
+    </nz-form-control>
+  </form>
+</div>
