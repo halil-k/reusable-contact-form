@@ -44,12 +44,13 @@ export class ContactFormComponent implements OnInit {
   @Input() header: string;
   @Input() description: string;
   @Input() submitText: string;
-  @Input() whitePaper: string;
+  @Input() whitePaper: { filePath: string, downloadName: string };
   @Input() size: any = 'default';
   @Input() inputsObj: SelectedInputs | string[];
   @Input() selectFields: SelectObject;
   @Input() checkbox: string;
   @Input() disclaimer: string;
+  @Input() buttonTooltip: string;
   @Output() formSubmit$ = new Subject<FormGroup>();
   allControlsArr: string[] = ['firstName', 'lastName', 'name', 'companyName', 'jobTitle', 'email', 'phoneNumber'];
   keys = Object.keys;
@@ -158,7 +159,20 @@ export class ContactFormComponent implements OnInit {
   submitForm(): void {
     if (!this.myFormGroup.valid) { return; }
 
+    this.downloadWhitePaperIfExists();
     this.formSubmit$.next(this.myFormGroup);
     this.showConfirmationPage = true;
+  }
+
+  private downloadWhitePaperIfExists(): void {
+    if (this.whitePaper) {
+      const link = document.createElement('a');
+      link.setAttribute('type', 'hidden');
+      link.href = `${this.whitePaper.filePath}`;
+      link.download = this.whitePaper.downloadName;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    }
   }
 }

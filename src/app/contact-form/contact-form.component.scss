@@ -103,6 +103,13 @@ form.custom-reusable-form {
       background: rgb(117, 234, 247);
       color: black;
       box-shadow: none;
+
+      &.disabled {
+        background: rgba(117, 234, 247, 0.3);
+        color: rgba(black, 0.6);
+        border: none;
+        cursor: default;
+      }
     }
 
     ::ng-deep.ant-form-item {
@@ -117,7 +124,7 @@ form.custom-reusable-form {
         margin-bottom: -8px;
       }
     }
-}
+  }
 }
 
 .dark-mode {
@@ -154,5 +161,12 @@ form.custom-reusable-form {
   .ant-btn, .ant-btn:hover {
     background: #F9CB27;
     color: #13141D;
+
+    &.disabled {
+      background: #B7B8C8;
+      color: white;
+      border: none;
+      cursor: default;
+    }
   }
 }
